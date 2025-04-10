@@ -1,23 +1,38 @@
-class Calculator:
+import unittest
+from calculator import Calculator
 
-    def add(self, a, b):
-        return a + b
 
-    def subtract(self, a, b):
-        return a - b
+class TestCalculator(unittest.TestCase):
 
-    def multiply(self, a, b):
-        return a * b
+    def setUp(self):
+        self.calc = Calculator()
 
-    def divide(self, a, b):
-        if b == 0:
-            raise ValueError("Cannot divide by zero.")
-        return a / b
+    def test_add(self):
+        self.assertEqual(self.calc.add(3, 7), 10)
 
-    def power(self, a, b):
-        return a ** b
+    def test_subtract(self):
+        self.assertEqual(self.calc.subtract(10, 4), 6)
 
-    def mod(self, a, b):
-        if b == 0:
-            raise ValueError("Cannot perform modulus by zero.")
-        return a % b
+    def test_multiply(self):
+        self.assertEqual(self.calc.multiply(5, 5), 25)
+
+    def test_divide(self):
+        self.assertEqual(self.calc.divide(8, 2), 4)
+
+    def test_divide_by_zero(self):
+        with self.assertRaises(ValueError):
+            self.calc.divide(5, 0)
+
+    def test_power(self):
+        self.assertEqual(self.calc.power(2, 3), 8)
+
+    def test_mod(self):
+        self.assertEqual(self.calc.mod(10, 3), 1)
+
+    def test_mod_by_zero(self):
+        with self.assertRaises(ValueError):
+            self.calc.mod(10, 0)
+
+
+if __name__ == '__main__':
+    unittest.main()
