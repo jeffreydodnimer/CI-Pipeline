@@ -20,3 +20,4 @@ class Calculator:
         if b == 0:
             raise ValueError("Cannot perform modulus by zero.")
         return a % b
+    

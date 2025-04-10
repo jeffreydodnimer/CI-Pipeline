@@ -1,7 +1,9 @@
 import unittest
 from calculator import Calculator
 
+
 class TestCalculator(unittest.TestCase):
+
     def setUp(self):
         self.calc = Calculator()
 
@@ -30,6 +32,7 @@ class TestCalculator(unittest.TestCase):
     def test_mod_by_zero(self):
         with self.assertRaises(ValueError):
             self.calc.mod(10, 0)
+
 
 if __name__ == '__main__':
     unittest.main()
